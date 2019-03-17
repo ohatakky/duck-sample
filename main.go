@@ -35,6 +35,10 @@ func duckSmartPhone(s SmartPhone) {
 	}
 }
 
+func not_is_a(i IPhone6) {
+	fmt.Println("this is an iphone6")
+}
+
 type deligate_IPhone7 struct {
 	i6     IPhone6
 	FeliCa bool
@@ -60,4 +64,13 @@ func main() {
 	em_iphone7 := embedded_IPhone7{}
 	duckSmartPhone(em_iphone7)
 	duckSmartPhone(em_iphone7.IPhone6) // 予期せぬ動作
+
+	not_is_a(iphone6)
+	// not_is_a(em_iphone7) // エラー。埋め込みは is - a ではない
+
+	// アドレスを確認
+	var de_iphone7_2 *deligate_IPhone7
+	de_iphone7_2 = &deligate_IPhone7{i6: iphone6, FeliCa: true}
+	fmt.Println(de_iphone7_2.i6)
+
 }
